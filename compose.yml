@@ -3,8 +3,7 @@ services:
     build:
       context: .
       tags:
-        - whalybird/astroneer-server:latest
-        - whalybird/astroneer-server:experimental
+        - whalybird/astroneer-server:experimental-arm64
     stdin_open: true
     tty: true
     ports:
