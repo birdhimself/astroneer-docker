@@ -1,0 +1,34 @@
+[launcher]
+AutoUpdateServer = true
+CheckNetwork = true
+OverwritePublicIP = false
+LogDebugMessages = true
+AstroServerPath = "AstroneerServer"
+OverrideWinePath = "/protonge/files/bin/wine64"
+WinePrefixPath = "winepfx"
+WineBootTimeout = 30
+LogPath = "logs"
+PlayfabAPIInterval = 2
+ServerStatusInterval = 3.0
+DisableEncryption = false
+
+[launcher.notifications]
+method = ""
+name = "Astroneer Dedicated Server"
+EventWhitelist = [
+    "message",
+    "start",
+    "registered",
+    "shutdown",
+    "crash",
+    "player_join",
+    "player_leave",
+    "command",
+    "save",
+    "savegame_change",
+]
+
+[launcher.status]
+SendStatus = false
+Interval = 120
+EndpointURL = ""
