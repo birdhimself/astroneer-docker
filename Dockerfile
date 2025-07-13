@@ -26,7 +26,7 @@ RUN apt-get install -y box64-generic-arm
 
 RUN mkdir -p /astrotux/libs
 RUN rm -f /astrotux/libs/depotdownloader
-RUN wget https://github.com/SteamRE/DepotDownloader/releases/download/DepotDownloader_3.4.0/DepotDownloader-linux-arm64.zip | unzip -p - DepotDownloader > /astrotux/libs/depotdownloader
+RUN wget -qO- https://github.com/SteamRE/DepotDownloader/releases/download/DepotDownloader_3.4.0/DepotDownloader-linux-arm64.zip | unzip -p - DepotDownloader > /astrotux/libs/depotdownloader
 RUN chmod +x /astrotux/libs/depotdownloader
 
 VOLUME /astrotux/AstroneerServer/Astro/Saved
