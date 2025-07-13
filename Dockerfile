@@ -16,7 +16,7 @@ RUN apt-get install -y python3-pip python3-venv git gnutls-bin wget unzip
 RUN git clone https://github.com/JoeJoeTV/AstroTuxLauncher.git /astrotux
 
 RUN mkdir /proton
-RUN wget https://github.com/GloriousEggroll/proton-ge-custom/releases/download/GE-Proton10-9/GE-Proton10-9.tar.gz | tar -xz --strip-components=1 -C /proton
+RUN wget -O - https://github.com/GloriousEggroll/proton-ge-custom/releases/download/GE-Proton10-9/GE-Proton10-9.tar.gz | tar -xz --strip-components=1 -C /proton
 
 RUN wget -qO- "https://pi-apps-coders.github.io/box64-debs/KEY.gpg" | gpg --dearmor -o /etc/apt/keyrings/box64-archive-keyring.gpg
 RUN echo "Types: deb\nURIs: https://Pi-Apps-Coders.github.io/box64-debs/debian\nSuites: ./\nSigned-By: /usr/share/keyrings/box64-archive-keyring.gpg" \
