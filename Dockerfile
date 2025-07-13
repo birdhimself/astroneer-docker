@@ -19,7 +19,7 @@ RUN mkdir /proton
 RUN wget -O - https://github.com/GloriousEggroll/proton-ge-custom/releases/download/GE-Proton10-9/GE-Proton10-9.tar.gz | tar -xz --strip-components=1 -C /proton
 
 RUN wget -qO- "https://pi-apps-coders.github.io/box64-debs/KEY.gpg" | gpg --dearmor -o /etc/apt/keyrings/box64-archive-keyring.gpg
-RUN echo "Types: deb\nURIs: https://Pi-Apps-Coders.github.io/box64-debs/debian\nSuites: ./\nSigned-By: /usr/share/keyrings/box64-archive-keyring.gpg" \
+RUN echo "Types: deb\nURIs: https://Pi-Apps-Coders.github.io/box64-debs/debian\nSuites: ./\nSigned-By: /etc/apt/keyrings/box64-archive-keyring.gpg" \
     | tee /etc/apt/sources.list.d/box64.sources > /dev/null
 RUN apt-get update
 RUN apt-get install -y box64-generic-arm
