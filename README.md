@@ -32,6 +32,18 @@ services:
 | `DISABLE_ENCRYPTION` | Disables connection encryption                                             | `false` |
 | `FORCE_CHOWN`        | `chown`s the astrotux folder on startup; potential workaround for an issue | `false` |
 
+### Server settings
+
+Most server settings can be found in the `AstroServerSettings.ini` file inside the `./saved/Config/WindowsServer` folder (assuming it's configured as per the example `compose.yml` above). It's recommended to stop the server (`docker compose stop`) before editing this file to make sure it's not overwritten the next time the server shuts down.
+
+I'm not listing all settings here (but be sure to check [this post on the official Astroneer blog](https://blog.astroneer.space/p/astroneer-dedicated-server-details/) for more information), but some of the more interesting ones are:
+
+| Key                             | Description                                                                              |
+|---------------------------------|------------------------------------------------------------------------------------------|
+| `ServerName`                    | Name of the server in the server list                                                    |
+| `ServerPassword`                | If set, this password is required to join the server                                     |
+| `ActiveSaveFileDescriptiveName` | Name of the active savegame; can be changed to create a new save or load an existing one |
+
 ## Variants
 
 ### Registries
