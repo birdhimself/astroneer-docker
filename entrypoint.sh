@@ -17,7 +17,9 @@ python3 AstroTuxLauncher.py install
 TEMPFILE=$(mktemp)
 cp launcher.toml $TEMPFILE
 
-if [[ "$DISABLE_ENCRYPTION" =~ ^([Tt][Rr][Uu][Ee]|1|[Yy][Ee][Ss])$ ]]; then
+shopt -s nocasematch
+
+if [[ "$DISABLE_ENCRYPTION" =~ ^(true|1|yes])$ ]]; then
   echo Encryption will be disabled because DISABLE_ENCRYPTION is set.
   echo Check https://github.com/birdhimself/astroneer-docker?tab=readme-ov-file#configuring-clients-if-encryption-is-disabled on how to enable clients to connect to servers with encryption disabled.
   sed -i 's/^DisableEncryption.*/DisableEncryption = true/' $TEMPFILE
@@ -26,11 +28,13 @@ else
   sed -i 's/^DisableEncryption.*/DisableEncryption = false/' $TEMPFILE
 fi
 
-if [[ "$DEBUG" =~ ^([Tt][Rr][Uu][Ee]|1|[Yy][Ee][Ss])$ ]]; then
+if [[ "$DEBUG" =~ ^(true|1|yes)$ ]]; then
   sed -i 's/^LogDebugMessages.*/LogDebugMessages = true/' $TEMPFILE
 else
   sed -i 's/^LogDebugMessages.*/LogDebugMessages = false/' $TEMPFILE
 fi
+
+shopt -u nocasematch
 
 cp $TEMPFILE launcher.toml
 
