@@ -12,8 +12,8 @@ RUN wget -NP /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/debian/d
 
 RUN apt-get update
 RUN apt-get install -y winehq-devel python3-pip python3-venv git gnutls-bin
+RUN git clone https://github.com/birdhimself/AstroTuxLauncher.git /astrotux
 
-RUN git clone https://github.com/JoeJoeTV/AstroTuxLauncher.git /astrotux
 
 VOLUME /astrotux/AstroneerServer/Astro/Saved
 
