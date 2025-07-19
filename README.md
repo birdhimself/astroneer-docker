@@ -5,6 +5,8 @@
 
 A docker image to run Astroneer Dedicated Server using a modified version of [AstroTuxLauncher](https://github.com/birdhimself/AstroTuxLauncher). The source code is [available on GitHub](https://github.com/birdhimself/astroneer-docker/).
 
+**Supports encryption as well as Intel/AMD and ARM CPUs.**
+
 ## Compose
 
 ```yaml
@@ -22,6 +24,8 @@ services:
 
 ## Variants
 
+### Registries
+
 The image is available from both **ghcr.io** and **docker.io**:
 
 | Registry  | Full image name                        |
@@ -35,6 +39,10 @@ The image is available from both **ghcr.io** and **docker.io**:
 |----------------|----------------------------------------------------------------------------------|
 | `latest`       | Latest version for general use. Recommended in most cases.                       |
 | `experimental` | Version with experimental features and changes. Will eventually become `latest`. |
+
+### Architectures
+
+This image support both `amd64` (Intel/AMD CPUs) and `arm64` (e.g. Raspberry Pi, Apple) architectures. The correct image variant should be pulled automatically.
 
 ## Encryption support
 
