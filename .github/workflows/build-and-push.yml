@@ -3,7 +3,8 @@ name: Build and Push Container Images
 on:
   push:
     branches:
-      - use-base-image # Temporary
+      - main
+      - dev
 
 jobs:
   build-and-push:
@@ -11,6 +12,13 @@ jobs:
     permissions:
       contents: read
       packages: write
+    env:
+      IMAGE_TAG: |-
+        ${{
+           github.ref_name == 'main' && 'latest'
+        || github.ref_name == 'dev'  && 'experimental'
+        ||                              'unknown'
+        }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -29,5 +37,5 @@ jobs:
           IMAGE=ghcr.io/${{ github.repository_owner }}/astroneer-server
           docker buildx build \
             --platform linux/amd64,linux/arm64 \
-            -t $IMAGE:experimental \
+            -t $IMAGE:$IMAGE_TAG \
             --push .
