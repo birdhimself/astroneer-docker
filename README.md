@@ -3,14 +3,16 @@
 [![Docker Pulls](https://img.shields.io/docker/pulls/whalybird/astroneer-server.svg)](https://hub.docker.com/r/whalybird/astroneer-server)
 [![Docker stars](https://img.shields.io/docker/stars/whalybird/astroneer-server.svg)](https://hub.docker.com/r/whalybird/astroneer-server)
 
-A docker image to run Astroneer Dedicated Server using [AstroTuxLauncher](https://github.com/JoeJoeTV/AstroTuxLauncher). The source code is [available on GitHub](https://github.com/C0Nd3Mnd/astroneer-docker/).
+A docker image to run Astroneer Dedicated Server using a modified version of [AstroTuxLauncher](https://github.com/birdhimself/AstroTuxLauncher). The source code is [available on GitHub](https://github.com/birdhimself/astroneer-docker/).
+
+**Supports encryption as well as Intel/AMD and ARM CPUs.**
 
 ## Compose
 
 ```yaml
 services:
   astroneer:
-    image: whalybird/astroneer-server:latest
+    image: ghcr.io/birdhimself/astroneer-server:latest
     restart: unless-stopped
     stdin_open: true
     tty: true
@@ -20,21 +22,61 @@ services:
       - ./saved:/astrotux/AstroneerServer/Astro/Saved
 ```
 
-## Encryption support (experimental)
+## Configuration
 
-As of Wine 10.6 and GnuTLS 3.8.3, server encryption is supported. This container image now has an `experimental` tag that supports encryption and enables it by default. After some testing I'm planning to make this the default image (`latest` tag).
+### Environment
 
-If you want to use encryption right now, change the `image` line in your `compose.yml` to `image: whalybird/astroneer-server:experimental`. Make sure to **remove** the `net.AllowEncryption=False` line from any client's `Engine.ini` (see [Configuring clients](#configuring-clients)).
+| Variable             | Description                                                                | Default |
+|----------------------|----------------------------------------------------------------------------|---------|
+| `DEBUG`              | Enables debug logging                                                      | `false` |
+| `DISABLE_ENCRYPTION` | Disables connection encryption                                             | `false` |
+| `FORCE_CHOWN`        | `chown`s the astrotux folder on startup; potential workaround for an issue | `false` |
 
-You can also disable encryption on this `experimental` image by setting `DISABLE_ENCRYPTION=true` in your `compose.yml`.
+### Server settings
+
+Most server settings can be found in the `AstroServerSettings.ini` file inside the `./saved/Config/WindowsServer` folder (assuming it's configured as per the example `compose.yml` above). It's recommended to stop the server (`docker compose stop`) before editing this file to make sure it's not overwritten the next time the server shuts down.
+
+I'm not listing all settings here (but be sure to check [this post on the official Astroneer blog](https://blog.astroneer.space/p/astroneer-dedicated-server-details/) for more information), but some of the more interesting ones are:
+
+| Key                             | Description                                                                              |
+|---------------------------------|------------------------------------------------------------------------------------------|
+| `ServerName`                    | Name of the server in the server list                                                    |
+| `ServerPassword`                | If set, this password is required to join the server                                     |
+| `ActiveSaveFileDescriptiveName` | Name of the active savegame; can be changed to create a new save or load an existing one |
+
+## Variants
+
+### Registries
+
+The image is available from both **ghcr.io** and **docker.io**:
+
+| Registry  | Full image name                        |
+|-----------|----------------------------------------|
+| docker.io | `ghcr.io/birdhimself/astroneer-server` |
+| ghcr.io   | `docker.io/whalybird/astroneer-server` |
+
+### Available tags
+
+| Tag            | Description                                                                      |
+|----------------|----------------------------------------------------------------------------------|
+| `latest`       | Latest version for general use. Recommended in most cases.                       |
+| `experimental` | Version with experimental features and changes. Will eventually become `latest`. |
+
+### Architectures
+
+This image support both `amd64` (Intel/AMD CPUs) and `arm64` (e.g. Raspberry Pi, Apple) architectures. The correct image variant should be pulled automatically.
+
+## Encryption support
+
+As of Wine 10.6 and GnuTLS 3.8.3, server encryption is supported. If you don't want to use encryption, you can disable it by setting `DISABLE_ENCRYPTION=true` in your `compose.yml`.
 
 ## Interacting with the AstroTuxLauncher console
 
 You can interact with the console by using `docker compose attach astroneer`. Detach using `CTRL+p` + `CTRL+q`, using `CTRL+c` will shutdown the server.
 
-## Configuring clients
+## Configuring clients (if encryption is disabled)
 
-Because Wine doesn't support some of the encryption functionality Astroneer uses, running this container has encryption disabled by default. That means that game clients will only be able to connect if they have encryption disabled as well.
+Should you choose to disable encryption, clients will need to be configured accordingly.
 
 To disable encryption, you need to edit the file `Engine.ini` located in `%localappdata%\Astro\Saved\Config\WindowsNoEditor`. Make sure the game isn't running and add the following lines to the file:
 
