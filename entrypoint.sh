@@ -21,4 +21,9 @@ else
   sed -i 's/^DisableEncryption.*/DisableEncryption = false/' launcher.toml
 fi
 
+if [[ "$DEBUG" =~ ^([Tt][Rr][Uu][Ee]|1|[Yy][Ee][Ss])$ ]]; then
+  sed -i 's/^LogDebugMessages.*/LogDebugMessages = true/' launcher.toml
+else
+  sed -i 's/^LogDebugMessages.*/LogDebugMessages = false/' launcher.toml
+
 python3 AstroTuxLauncher.py start

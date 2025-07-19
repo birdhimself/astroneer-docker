@@ -18,5 +18,6 @@ RUN /install.sh
 
 ENV DISABLE_ENCRYPTION=false
 ENV FORCE_CHOWN=false
+ENV DEBUG=false
 
 ENTRYPOINT [ "/entrypoint.sh" ]
