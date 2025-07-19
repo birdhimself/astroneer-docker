@@ -5,6 +5,7 @@ RUN apt-get install -y python3-pip python3-venv git gnutls-bin
 
 RUN git clone https://github.com/birdhimself/AstroTuxLauncher.git /astrotux
 
+COPY ./launcher.toml /astrotux/
 
 VOLUME /astrotux/AstroneerServer/Astro/Saved
 

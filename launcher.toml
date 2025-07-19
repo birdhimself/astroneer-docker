@@ -1,0 +1,3 @@
+[launcher]
+DisableEncryption = false
+OverrideWinePath = "/opt/proton/files/bin/wine64"
