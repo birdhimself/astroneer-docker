@@ -25,5 +25,6 @@ if [[ "$DEBUG" =~ ^([Tt][Rr][Uu][Ee]|1|[Yy][Ee][Ss])$ ]]; then
   sed -i 's/^LogDebugMessages.*/LogDebugMessages = true/' launcher.toml
 else
   sed -i 's/^LogDebugMessages.*/LogDebugMessages = false/' launcher.toml
+fi
 
 python3 AstroTuxLauncher.py start
