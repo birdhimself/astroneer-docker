@@ -24,12 +24,12 @@ services:
 
 The image is available from both **ghcr.io** and **docker.io**:
 
-| Registry  | Full Image Name                        |
+| Registry  | Full image name                        |
 |-----------|----------------------------------------|
 | docker.io | `ghcr.io/birdhimself/astroneer-server` |
 | ghcr.io   | `docker.io/whalybird/astroneer-server` |
 
-The following tags are available:
+### Available tags
 
 | Tag            | Description                                                                      |
 |----------------|----------------------------------------------------------------------------------|
