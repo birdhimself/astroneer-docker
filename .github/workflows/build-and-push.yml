@@ -5,7 +5,7 @@ on:
     branches:
       - use-base-image # Temporary
 
-Jobs:
+jobs:
   build-and-push:
     runs-on: ubuntu-latest
     permissions:
