@@ -10,7 +10,7 @@ fi
 
 source ./venv/bin/activate
 
-python3 AstroTuxLauncher.py install
+python3 AstroTuxLauncher.py genconfig
 
 # Use a temporary file to edit launcher.toml because if a bind exists sed -i
 # will fail. See https://unix.stackexchange.com/a/404356.
@@ -18,6 +18,8 @@ TEMPFILE=$(mktemp)
 cp launcher.toml $TEMPFILE
 
 shopt -s nocasematch
+
+sed -i 's/OverrideWinePath.*/OverrideWinePath = "\/opt\/proton\/files\/bin\/wine64"/' $TEMPFILE
 
 if [ -f /usr/local/bin/box64 ]; then
   sed -i 's/WrapperPath.*/WrapperPath = "\/usr\/local\/bin\/box64"/' $TEMPFILE
@@ -43,5 +45,7 @@ fi
 shopt -u nocasematch
 
 cp $TEMPFILE launcher.toml
+
+python3 AstroTuxLauncher.py install
 
 python3 AstroTuxLauncher.py start
