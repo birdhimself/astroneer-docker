@@ -33,8 +33,10 @@ else
 fi
 
 if [[ "$DEBUG" =~ ^(true|1|yes)$ ]]; then
+  export BOX64_LOG=1
   sed -i 's/^LogDebugMessages.*/LogDebugMessages = true/' $TEMPFILE
 else
+  export BOX64_LOG=0
   sed -i 's/^LogDebugMessages.*/LogDebugMessages = false/' $TEMPFILE
 fi
 
