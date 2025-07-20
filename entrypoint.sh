@@ -19,6 +19,10 @@ cp launcher.toml $TEMPFILE
 
 shopt -s nocasematch
 
+if [ -f /usr/local/bin/box64 ]; then
+  sed -i 's/WrapperPath.*/WrapperPath = "\/usr\/local\/bin\/box64"' $TEMPFILE
+fi
+
 if [[ "$DISABLE_ENCRYPTION" =~ ^(true|1|yes])$ ]]; then
   echo Encryption will be disabled because DISABLE_ENCRYPTION is set.
   echo Check https://github.com/birdhimself/astroneer-docker?tab=readme-ov-file#configuring-clients-if-encryption-is-disabled on how to enable clients to connect to servers with encryption disabled.

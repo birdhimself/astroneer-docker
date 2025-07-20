@@ -2,3 +2,4 @@
 DisableEncryption = false
 OverrideWinePath = "/opt/proton/files/bin/wine64"
 LogDebugMessages = false
+WrapperPath = ""
