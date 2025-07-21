@@ -1,7 +1,9 @@
 # Astroneer Dedicated Server (in a container)
 
-[![Docker Pulls](https://img.shields.io/docker/pulls/whalybird/astroneer-server.svg)](https://hub.docker.com/r/whalybird/astroneer-server)
-[![Docker stars](https://img.shields.io/docker/stars/whalybird/astroneer-server.svg)](https://hub.docker.com/r/whalybird/astroneer-server)
+[![Docker Pulls](https://img.shields.io/docker/pulls/whalybird/astroneer-server?style=for-the-badge&logo=docker&logoColor=white)
+](https://hub.docker.com/r/whalybird/astroneer-server)
+[![Docker Pulls](https://img.shields.io/docker/stars/whalybird/astroneer-server?style=for-the-badge&logo=docker&logoColor=white)
+](https://hub.docker.com/r/whalybird/astroneer-server)
 
 A docker image to run Astroneer Dedicated Server using a modified version of [AstroTuxLauncher](https://github.com/birdhimself/AstroTuxLauncher). The source code is [available on GitHub](https://github.com/birdhimself/astroneer-docker/).
 
