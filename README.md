@@ -1,11 +1,8 @@
 # Astroneer Dedicated Server (in a container)
 
-[![Docker Pulls](https://img.shields.io/docker/pulls/whalybird/astroneer-server?style=for-the-badge&logo=docker&logoColor=white)
-](https://hub.docker.com/r/whalybird/astroneer-server)
-[![Docker Pulls](https://img.shields.io/docker/stars/whalybird/astroneer-server?style=for-the-badge&logo=docker&logoColor=white)
-](https://hub.docker.com/r/whalybird/astroneer-server)
-[![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/birdhimself/astroneer-docker/build-and-push.yml?style=for-the-badge&logo=githubactions&logoColor=white)
-](https://github.com/birdhimself/astroneer-docker/actions/workflows/build-and-push.yml)
+[![Docker Pulls](https://img.shields.io/docker/pulls/whalybird/astroneer-server?style=for-the-badge&logo=docker&logoColor=white)](https://hub.docker.com/r/whalybird/astroneer-server)
+[![Docker Pulls](https://img.shields.io/docker/stars/whalybird/astroneer-server?style=for-the-badge&logo=docker&logoColor=white)](https://hub.docker.com/r/whalybird/astroneer-server)
+[![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/birdhimself/astroneer-docker/build-and-push.yml?style=for-the-badge&logo=githubactions&logoColor=white)](https://github.com/birdhimself/astroneer-docker/actions/workflows/build-and-push.yml)
 
 A docker image to run Astroneer Dedicated Server using a modified version of [AstroTuxLauncher](https://github.com/birdhimself/AstroTuxLauncher). The source code is [available on GitHub](https://github.com/birdhimself/astroneer-docker/).
 
