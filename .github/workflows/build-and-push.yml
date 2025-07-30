@@ -60,8 +60,8 @@ jobs:
           push: true
           provenance: false
           tags: |
-            ${{ env.IMAGE_GHCR }}:${{ matrix.arch }}-${{ IMAGE_TAG }}
-            ${{ env.IMAGE_DOCKERIO }}:${{ matrix.arch }}-${{ IMAGE_TAG }}
+            ${{ env.IMAGE_GHCR }}:${{ matrix.arch }}-${{ env.IMAGE_TAG }}
+            ${{ env.IMAGE_DOCKERIO }}:${{ matrix.arch }}-${{ env.IMAGE_TAG }}
 
   manifest:
     needs: build-and-push
