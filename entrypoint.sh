@@ -19,7 +19,7 @@ cp launcher.toml $TEMPFILE
 
 shopt -s nocasematch
 
-sed -i 's/OverrideWinePath.*/OverrideWinePath = "\/opt\/proton\/files\/bin\/wine64"/' $TEMPFILE
+sed -i 's/OverrideWinePath.*/OverrideWinePath = "\/opt\/wine\/bin\/wine"/' $TEMPFILE
 
 if [ -f /usr/local/bin/box64 ]; then
   sed -i 's/WrapperPath.*/WrapperPath = "\/usr\/local\/bin\/box64"/' $TEMPFILE
