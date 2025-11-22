@@ -31,7 +31,7 @@ services:
 |--------------------------|----------------------------------------------------------------------------|---------|
 | `DEBUG`                  | Enables debug logging                                                      | `false` |
 | `DISABLE_ENCRYPTION`     | Disables connection encryption                                             | `false` |
-| `CREATE_LAUNCHER_CONFIG` | Recreate the launcher.toml config everytime the container starts           | `true`  |
+| `CREATE_LAUNCHER_CONFIG` | Recreate the launcher.toml config every time the container starts          | `true`  |
 | `FORCE_CHOWN`            | `chown`s the astrotux folder on startup; potential workaround for an issue | `false` |
 
 ### Server settings
@@ -54,8 +54,8 @@ The image is available from both **ghcr.io** and **docker.io**:
 
 | Registry  | Full image name                        |
 |-----------|----------------------------------------|
-| docker.io | `ghcr.io/birdhimself/astroneer-server` |
-| ghcr.io   | `docker.io/whalybird/astroneer-server` |
+| ghcr.io   | `ghcr.io/birdhimself/astroneer-server` |
+| docker.io | `docker.io/whalybird/astroneer-server` |
 
 ### Available tags
 
@@ -66,7 +66,7 @@ The image is available from both **ghcr.io** and **docker.io**:
 
 ### Architectures
 
-This image support both `amd64` (Intel/AMD CPUs) and `arm64` (e.g. Raspberry Pi, Apple) architectures. The correct image variant should be pulled automatically.
+This image supports both `amd64` (Intel/AMD CPUs) and `arm64` (e.g. Raspberry Pi, Apple) architectures. The correct image variant should be pulled automatically.
 
 ## Encryption support
 
@@ -89,7 +89,7 @@ net.AllowEncryption=False
 
 ## Making yourself admin
 
-shutdown the server (`docker compose stop`) and edit the file `AstroServerSetting.ini` located in `./saves/Config/WindowsServer`. Change the value of `OwnerName` to your Steam name and make sure `OwnerGuid` is set to `0`. It should look like this:
+Shutdown the server (`docker compose stop`) and edit the file `AstroServerSettings.ini` located in `./saved/Config/WindowsServer`. Change the value of `OwnerName` to your Steam name and make sure `OwnerGuid` is set to `0`. It should look like this:
 
 ```ini
 OwnerName=My Steam Username
