@@ -27,11 +27,12 @@ services:
 
 ### Environment
 
-| Variable             | Description                                                                | Default |
-|----------------------|----------------------------------------------------------------------------|---------|
-| `DEBUG`              | Enables debug logging                                                      | `false` |
-| `DISABLE_ENCRYPTION` | Disables connection encryption                                             | `false` |
-| `FORCE_CHOWN`        | `chown`s the astrotux folder on startup; potential workaround for an issue | `false` |
+| Variable                 | Description                                                                | Default |
+|--------------------------|----------------------------------------------------------------------------|---------|
+| `DEBUG`                  | Enables debug logging                                                      | `false` |
+| `DISABLE_ENCRYPTION`     | Disables connection encryption                                             | `false` |
+| `CREATE_LAUNCHER_CONFIG` | Recreate the launcher.toml config everytime the container starts           | `true`  |
+| `FORCE_CHOWN`            | `chown`s the astrotux folder on startup; potential workaround for an issue | `false` |
 
 ### Server settings
 

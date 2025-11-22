@@ -19,6 +19,7 @@ RUN apt-get clean
 RUN rm -rf /var/lib/apt/lists/*
 
 ENV DISABLE_ENCRYPTION=false
+ENV CREATE_LAUNCHER_CONFIG=true
 ENV FORCE_CHOWN=false
 ENV DEBUG=false
 

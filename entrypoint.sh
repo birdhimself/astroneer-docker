@@ -10,7 +10,9 @@ fi
 
 source ./venv/bin/activate
 
-python3 AstroTuxLauncher.py genconfig
+if [[ "$CREATE_LAUNCHER_CONFIG" =~ ^(true|1|yes])$ ]] || [[ ! -f "/astrotux/launcher.toml" ]]; then
+  python3 AstroTuxLauncher.py genconfig
+fi
 
 # Use a temporary file to edit launcher.toml because if a bind exists sed -i
 # will fail. See https://unix.stackexchange.com/a/404356.

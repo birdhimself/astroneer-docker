@@ -7,6 +7,11 @@ services:
         - whalybird/astroneer-server:experimental
     stdin_open: true
     tty: true
+    environment:
+      DEBUG: false
+      DISABLE_ENCRYPTION: false
+      CREATE_LAUNCHER_CONFIG: true
+      FORCE_CHOWN: false
     ports:
       - 7777:7777/udp
     volumes:
