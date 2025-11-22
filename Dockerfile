@@ -1,4 +1,4 @@
-FROM ghcr.io/birdhimself/base-proton:latest
+FROM ghcr.io/birdhimself/base-wine:latest
 
 RUN apt-get update
 RUN apt-get install -y python3-pip python3-venv git gnutls-bin
