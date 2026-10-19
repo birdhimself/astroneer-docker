@@ -1,7 +1,7 @@
-FROM ghcr.io/birdhimself/base-wine:latest
+FROM ghcr.io/birdhimself/base-proton:latest
 
 RUN apt-get update
-RUN apt-get install -y python3-pip python3-venv git gnutls-bin
+RUN apt-get install -y python3-pip python3-venv git gnutls-bin xvfb
 
 RUN git clone https://github.com/birdhimself/AstroTuxLauncher.git /astrotux
 

@@ -2,6 +2,12 @@
 
 cd /astrotux
 
+# Proton's Wine hangs when the server opens its console window without a
+# display, so provide a virtual one. Remove stale locks left by a restart.
+rm -f /tmp/.X99-lock /tmp/.X11-unix/X99
+Xvfb :99 -nolisten tcp >/dev/null 2>&1 &
+export DISPLAY=:99
+
 if [[ "$FORCE_CHOWN" =~ ^([Tt][Rr][Uu][Ee]|1|[Yy][Ee][Ss])$ ]]; then
   echo Force chowning /astrotux folder.
   chown -R $(id -u):$(id -g) /astrotux
@@ -21,11 +27,11 @@ cp launcher.toml $TEMPFILE
 
 shopt -s nocasematch
 
-sed -i 's/OverrideWinePath.*/OverrideWinePath = "\/opt\/wine\/bin\/wine"/' $TEMPFILE
-
-if [ -f /usr/local/bin/box64 ]; then
-  sed -i 's/WrapperPath.*/WrapperPath = "\/usr\/local\/bin\/box64"/' $TEMPFILE
-fi
+# Resolve the symlink because AstroTuxLauncher expects wineserver next to wine,
+# and Proton keeps its binaries in an architecture-specific folder.
+WINE_PATH=$(readlink -f /usr/local/bin/wine)
+sed -i "s|OverrideWinePath.*|OverrideWinePath = \"$WINE_PATH\"|" $TEMPFILE
+sed -i 's/WrapperPath.*/WrapperPath = ""/' $TEMPFILE
 
 if [[ "$DISABLE_ENCRYPTION" =~ ^(true|1|yes])$ ]]; then
   echo Encryption will be disabled because DISABLE_ENCRYPTION is set.
@@ -37,10 +43,8 @@ else
 fi
 
 if [[ "$DEBUG" =~ ^(true|1|yes)$ ]]; then
-  export BOX64_LOG=1
   sed -i 's/^LogDebugMessages.*/LogDebugMessages = true/' $TEMPFILE
 else
-  export BOX64_LOG=0
   sed -i 's/^LogDebugMessages.*/LogDebugMessages = false/' $TEMPFILE
 fi
 
